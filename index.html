@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Taptap手游社区门户 - 提供全球热门手游下载、官方资讯发布、玩家攻略分享及开服表查询服务，是玩家发现优质手游的第一站。">
+    <meta name="keywords" content="taptap,手游下载,二次元手游,独立游戏,手游社区,开服表,手游攻略">
+    <title>Taptap-全球手游社区与下载平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary: #ff5f00;
+            --primary-hover: #e04f00;
+            --dark: #1a1a1a;
+            --gray: #888;
+            --bg-light: #f5f5f5;
+            --white: #ffffff;
+            --radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: 8px; }
+        .gap-4 { gap: 16px; }
+        .text-center { text-align: center; }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--dark);
+            color: var(--dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 24px;
+            position: relative;
+            display: none;
+        }
+
+        @media(min-width: 768px) {
+            .search-bar { display: block; }
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            background: #f9f9f9;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            width: 16px;
+            height: 16px;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        @media(min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: 24px;
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .user-actions { display: flex; gap: 12px; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: var(--white);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media(min-width: 900px) {
+            .hero-content { grid-template-columns: 1fr 1fr; }
+        }
+
+        .hero-text h1 {
+            font-size: 32px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 100%;
+            height: auto;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s;
+        }
+
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 40px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-more {
+            font-size: 14px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .section-more:hover { color: var(--primary); }
+
+        /* Game Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        @media(min-width: 600px) {
+            .game-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media(min-width: 900px) {
+            .game-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        .game-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .card-cover {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .card-info {
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-tags {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .card-rating {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ff9f0a;
+        }
+
+        /* Featured Section */
+        .featured-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media(min-width: 900px) {
+            .featured-layout { grid-template-columns: 2fr 1fr; }
+        }
+
+        .featured-card {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .featured-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .featured-card:hover .featured-bg {
+            transform: scale(1.05);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+        }
+
+        .featured-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+
+        .featured-title {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .featured-desc {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            max-width: 600px;
+        }
+
+        .side-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .side-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            background: var(--white);
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .side-item:hover { background: #f9f9f9; }
+
+        .side-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .side-content h4 {
+            font-size: 15px;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .side-content p {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* Channels */
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media(min-width: 600px) {
+            .channel-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .channel-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .channel-card:hover { transform: translateY(-2px); }
+
+        .channel-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .channel-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 16px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover { color: var(--primary); }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--gray);
+            font-size: 14px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { color: var(--primary); }
+
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media(min-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .footer-col h5 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover { color: var(--primary); }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: var(--gray);
+            font-size: 12px;
+        }
+
+        /* Mobile Nav */
+        .mobile-menu-btn {
+            display: block;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media(min-width: 768px) { .mobile-menu-btn { display: none; } }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner flex items-center justify-between">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#ff5f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="#ff5f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="#ff5f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Taptap
+        </a>
+        
+        <div class="search-bar">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" class="search-input" placeholder="搜索游戏、攻略或开服信息...">
+        </div>
+
+        <nav class="nav-links">
+            <a href="#">首页</a>
+            <a href="#">游戏库</a>
+            <a href="#">攻略社区</a>
+            <a href="#">开服表</a>
+            <a href="#">活动中心</a>
+        </nav>
+
+        <div class="user-actions">
+            <a href="#" class="btn btn-outline" style="padding: 6px 16px;">登录</a>
+            <a href="#" class="btn btn-primary" style="padding: 6px 16px;">下载App</a>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>发现你的下一款<br>热爱手游</h1>
+                <p>Taptap 是全球领先的手游社区，汇集最热门的二次元、独立游戏、角色扮演与策略游戏。在这里，玩家与开发者直接对话，获取最新资讯与一手攻略。</p>
+                <div class="flex gap-2">
+                    <a href="#" class="btn btn-primary">立即下载App</a>
+                    <a href="#" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">浏览游戏库</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/taptaphero/600/400" alt="Taptap 社区展示">
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Games -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">热门推荐</h2>
+                <a href="#" class="section-more">查看全部 <span>→</span></a>
+            </div>
+            <div class="game-grid">
+                <!-- Game Card 1 -->
+                <div class="game-card">
+                    <img src="https://picsum.photos/seed/game1/300/300" class="card-cover" alt="游戏封面">
+                    <div class="card-info">
+                        <h3 class="card-title">幻塔：觉醒纪元</h3>
+                        <div class="card-tags">开放世界 / 二次元 / RPG</div>
+                        <div class="card-rating">★★★★★ 9.8</div>
+                    </div>
+                </div>
+                <!-- Game Card 2 -->
+                <div class="game-card">
+                    <img src="https://picsum.photos/seed/game2/300/300" class="card-cover" alt="游戏封面">
+                    <div class="card-info">
+                        <h3 class="card-title">崩坏：星穹铁道</h3>
+                        <div class="card-tags">回合制 / 科幻 / 奇幻</div>
+                        <div class="card-rating">★★★★★ 9.9</div>
+                    </div>
+                </div>
+                <!-- Game Card 3 -->
+                <div class="game-card">
+                    <img src="https://picsum.photos/seed/game3/300/300" class="card-cover" alt="游戏封面">
+                    <div class="card-info">
+                        <h3 class="card-title">原神：提瓦特传说</h3>
+                        <div class="card-tags">开放世界 / 冒险 / 养成</div>
+                        <div class="card-rating">★★★★☆ 9.7</div>
+                    </div>
+                </div>
+                <!-- Game Card 4 -->
+                <div class="game-card">
+                    <img src="https://picsum.photos/seed/game4/300/300" class="card-cover" alt="游戏封面">
+                    <div class="card-info">
+                        <h3 class="card-title">星穹铁道：星际列车</h3>
+                        <div class="card-tags">策略 / 剧情 / 视觉小说</div>
+                        <div class="card-rating">★★★★★ 9.8</div>
+                    </div>
+                </div>
+                <!-- Game Card 5 -->
+                <div class="game-card">
+                    <img src="https://picsum.photos/seed/game5/300/300" class="card-cover" alt="游戏封面">
+                    <div class="card-info">
+                        <h3 class="card-title">明日方舟：泰拉</h3>
+                        <div class="card-tags">塔防 / 深度策略 / 科幻</div>
+                        <div class="card-rating">★★★★★ 9.6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured News & Updates -->
+    <section style="background-color: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">最新资讯</h2>
+                <a href="#" class="section-more">进入资讯中心 <span>→</span></a>
+            </div>
+            <div class="featured-layout">
+                <div class="featured-card">
+                    <img src="https://picsum.photos/seed/news1/800/400" class="featured-bg" alt="新闻图片">
+                    <div class="featured-overlay">
+                        <span class="featured-badge">官方公告</span>
+                        <h3 class="featured-title">《幻塔》全新版本「觉醒纪元」将于本周五全服更新</h3>
+                        <p class="featured-desc">全新剧情章节、武器系统升级以及限时活动即将上线，敬请期待。</p>
+                    </div>
+                </div>
+                <div class="side-list">
+                    <div class="side-item">
+                        <img src="https://picsum.photos/seed/news2/100/100" class="side-thumb" alt="新闻缩略">
+                        <div class="side-content">
+                            <h4>《崩坏：星穹铁道》2.0版本前瞻直播预告</h4>
+                            <p>1小时前</p>
+                        </div>
+                    </div>
+                    <div class="side-item">
+                        <img src="https://picsum.photos/seed/news3/100/100" class="side-thumb" alt="新闻缩略">
+                        <div class="side-content">
+                            <h4>独立游戏《波西亚时光》年度更新内容详解</h4>
+                            <p>3小时前</p>
+                        </div>
+                    </div>
+                    <div class="side-item">
+                        <img src="https://picsum.photos/seed/news4/100/100" class="side-thumb" alt="新闻缩略">
+                        <div class="side-content">
+                            <h4>玩家热议：为什么二次元手游越来越难做？</h4>
+                            <p>5小时前</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Channels -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">热门专区</h2>
+            </div>
+            <div class="channel-grid">
+                <div class="channel-card">
+                    <span class="channel-icon">⚔️</span>
+                    <div class="channel-name">动作射击</div>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">🏰</span>
+                    <div class="channel-name">策略模拟</div>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">🎨</span>
+                    <div class="channel-name">二次元</div>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">🎲</span>
+                    <div class="channel-name">独立游戏</div>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">🤖</span>
+                    <div class="channel-name">科幻未来</div>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">🃏</span>
+                    <div class="channel-name">卡牌对战</div>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">🏃</span>
+                    <div class="channel-name">休闲竞技</div>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">📖</span>
+                    <div class="channel-name">文字冒险</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="background-color: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">常见问题</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">Taptap 是什么？如何下载？ <span>−</span></div>
+                    <div class="faq-answer">Taptap 是一个专注于手游的社区平台。您可以通过官方渠道下载 Taptap 客户端，在应用商店搜索“Taptap”即可获取最新版本。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Taptap 上的游戏收费吗？ <span>−</span></div>
+                    <div class="faq-answer">Taptap 提供的游戏多为免费下载，部分游戏包含内购项目。我们支持主流的移动支付方式，确保交易安全。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何在 Taptap 上发布攻略？ <span>−</span></div>
+                    <div class="faq-answer">下载 Taptap App 后，进入游戏专区，点击“写攻略”按钮，即可上传图文或视频内容，分享给其他玩家。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">什么是开服表？ <span>−</span></div>
+                    <div class="faq-answer">开服表记录了所有热门手游的测试、公测及停服维护时间，帮助玩家及时掌握服务器动态。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 16px;">Taptap</div>
+                <p style="color: var(--gray); font-size: 14px; line-height: 1.6;">
+                    致力于连接玩家与游戏开发者，打造最纯粹的手游社区体验。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h5>关于我们</h5>
+                <ul>
+                    <li><a href="#">公司介绍</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>社区服务</h5>
+                <ul>
+                    <li><a href="#">游戏库</a></li>
+                    <li><a href="#">攻略中心</a></li>
+                    <li><a href="#">开服表</a></li>
+                    <li><a href="#">活动专区</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>关注我们</h5>
+                <ul>
+                    <li><a href="#">官方微博</a></li>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">官方论坛</a></li>
+                    <li><a href="#">Discord社区</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023-2024 Taptap. All Rights Reserved. 本页面为演示设计，非官方网站。</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Simple FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', event => {
+            const parent = item.parentElement;
+            const isActive = parent.classList.contains('active');
+            
+            // Close all others
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+            
+            // Toggle current
+            if (!isActive) {
+                parent.classList.add('active');
+            }
+        });
+    });
+
+    // Mobile Menu Toggle (Placeholder logic)
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileBtn.addEventListener('click', () => {
+        const isFlex = navLinks.style.display === 'flex';
+        navLinks.style.display = isFlex ? 'none' : 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '64px';
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.background = '#fff';
+        navLinks.style.padding = '20px';
+        navLinks.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+    });
+
+    // Sticky Header Shadow on Scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+        } else {
+            header.style.boxShadow = '0 1px 0 rgba(0,0,0,0.05)';
+        }
+    });
+</script>
+
+</body>
+  </html>
