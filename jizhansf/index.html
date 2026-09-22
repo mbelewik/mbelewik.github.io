@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="机战SF在线阅读平台，提供热血机甲漫画、高达同人作品及经典SF机战题材的连载更新与高清资源下载。">
+    <meta name="keywords" content="机战SF,机甲漫画,高达同人,科幻机战,在线阅读">
+    <title>机战SF-热血机甲漫画连载与同人资源站</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #00f2ff;
+            --secondary-color: #ff0055;
+            --bg-dark: #0a0e17;
+            --bg-card: #151a25;
+            --text-main: #e0e6ed;
+            --text-muted: #94a3b8;
+            --border-color: #2d3748;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: rgba(10, 14, 23, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-menu a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 8px 12px;
+            color: var(--text-main);
+            width: 200px;
+            transition: width 0.3s;
+        }
+
+        .search-box input:focus {
+            width: 280px;
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.1) 0%, rgba(10, 14, 23, 1) 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://picsum.photos/seed/mecha_bg/1600/600');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            border-radius: 2px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #00c8d4;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 242, 255, 0.1);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 40px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 16px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .section-more {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .section-more:hover {
+            color: var(--primary-color);
+        }
+
+        /* Ranking Grid */
+        .ranking-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .rank-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .rank-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .rank-img-wrapper {
+            position: relative;
+            padding-top: 140%;
+            overflow: hidden;
+        }
+
+        .rank-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .rank-info {
+            padding: 12px;
+        }
+
+        .rank-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rank-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Content List */
+        .content-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .list-item {
+            display: flex;
+            gap: 16px;
+            background: var(--bg-card);
+            padding: 12px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .list-item:hover {
+            background: #1e2533;
+        }
+
+        .list-thumb {
+            width: 120px;
+            height: 160px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .list-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .list-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .list-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .list-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .list-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 2px 6px;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .list-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .cat-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .cat-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .cat-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .cat-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .cat-count {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background: #05080f;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 16px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .ranking-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .content-list {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-menu {
+                display: none; /* 简化处理，移动端隐藏菜单 */
+            }
+            .header-inner {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .ranking-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>⚡</span> 机战SF
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">热门连载</a>
+                <a href="#">同人新作</a>
+                <a href="#">经典重制</a>
+                <a href="#">下载专区</a>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索机甲、高达、同人作品...">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <span class="hero-tag">NEW SEASON</span>
+                <h1>机甲世界的无限征途</h1>
+                <p>汇聚全球优质机战同人漫画、高达题材改编作品与经典SF机战小说。在这里，每一台机体都有灵魂，每一场战斗都值得铭记。</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-primary">开始阅读</a>
+                    <a href="#" class="btn btn-outline">投稿作品</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Ranking Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">🔥 热门机战榜单</h2>
+                    <a href="#" class="section-more">查看完整榜单 &rarr;</a>
+                </div>
+                <div class="ranking-grid">
+                    <article class="rank-card">
+                        <div class="rank-img-wrapper">
+                            <span class="rank-badge">1</span>
+                            <img src="https://picsum.photos/seed/mecha1/200/280" alt="作品封面" class="rank-img">
+                        </div>
+                        <div class="rank-info">
+                            <h3 class="rank-title">高达：异端命运</h3>
+                            <div class="rank-meta">
+                                <span>更新至 45话</span>
+                                <span>12.5w 阅读</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="rank-card">
+                        <div class="rank-img-wrapper">
+                            <span class="rank-badge">2</span>
+                            <img src="https://picsum.photos/seed/mecha2/200/280" alt="作品封面" class="rank-img">
+                        </div>
+                        <div class="rank-info">
+                            <h3 class="rank-title">EVA：新剧场版同人</h3>
+                            <div class="rank-meta">
+                                <span>更新至 20话</span>
+                                <span>10.2w 阅读</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="rank-card">
+                        <div class="rank-img-wrapper">
+                            <span class="rank-badge">3</span>
+                            <img src="https://picsum.photos/seed/mecha3/200/280" alt="作品封面" class="rank-img">
+                        </div>
+                        <div class="rank-info">
+                            <h3 class="rank-title">钢铁之魂：重启</h3>
+                            <div class="rank-meta">
+                                <span>连载中</span>
+                                <span>8.9w 阅读</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="rank-card">
+                        <div class="rank-img-wrapper">
+                            <span class="rank-badge">4</span>
+                            <img src="https://picsum.photos/seed/mecha4/200/280" alt="作品封面" class="rank-img">
+                        </div>
+                        <div class="rank-info">
+                            <h3 class="rank-title">宇宙战舰大和号：新编</h3>
+                            <div class="rank-meta">
+                                <span>完结</span>
+                                <span>7.4w 阅读</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="rank-card">
+                        <div class="rank-img-wrapper">
+                            <span class="rank-badge">5</span>
+                            <img src="https://picsum.photos/seed/mecha5/200/280" alt="作品封面" class="rank-img">
+                        </div>
+                        <div class="rank-info">
+                            <h3 class="rank-title">机动战士高达：铁血</h3>
+                            <div class="rank-meta">
+                                <span>连载中</span>
+                                <span>6.1w 阅读</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📂 分类浏览</h2>
+                </div>
+                <div class="category-grid">
+                    <a href="#" class="cat-card">
+                        <span class="cat-icon">🤖</span>
+                        <div class="cat-name">高达系列</div>
+                        <div class="cat-count">1,240 部作品</div>
+                    </a>
+                    <a href="#" class="cat-card">
+                        <span class="cat-icon">⚔️</span>
+                        <div class="cat-name">EVA同人</div>
+                        <div class="cat-count">856 部作品</div>
+                    </a>
+                    <a href="#" class="cat-card">
+                        <span class="cat-icon">🚀</span>
+                        <div class="cat-name">太空歌剧</div>
+                        <div class="cat-count">632 部作品</div>
+                    </a>
+                    <a href="#" class="cat-card">
+                        <span class="cat-icon">📚</span>
+                        <div class="cat-name">机战小说</div>
+                        <div class="cat-count">345 部作品</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Latest Updates -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📰 最新更新</h2>
+                    <a href="#" class="section-more">更多更新 &rarr;</a>
+                </div>
+                <div class="content-list">
+                    <article class="list-item">
+                        <div class="list-thumb">
+                            <img src="https://picsum.photos/seed/mecha6/200/280" alt="封面">
+                        </div>
+                        <div class="list-content">
+                            <div>
+                                <h3 class="list-title">超时空要塞F：爱的战歌</h3>
+                                <p class="list-desc">在银河系的边缘，歌姬与驾驶员的命运交织。全新的机体“瓦尔基里”正式参战，为了守护和平，他们再次起航。</p>
+                                <div class="list-tags">
+                                    <span class="tag">原创</span>
+                                    <span class="tag">音乐</span>
+                                    <span class="tag">恋爱</span>
+                                </div>
+                            </div>
+                            <div class="list-footer">
+                                <span>今天 10:30</span>
+                                <a href="#" class="btn-primary btn" style="padding: 4px 12px; font-size: 12px;">阅读</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="list-item">
+                        <div class="list-thumb">
+                            <img src="https://picsum.photos/seed/mecha7/200/280" alt="封面">
+                        </div>
+                        <div class="list-content">
+                            <div>
+                                <h3 class="list-title">00：觉醒的刹那</h3>
+                                <p class="list-desc">变革者与自然人之间的战争从未停止。主角驾驶着独角兽高达，在废墟中寻找着战争的真相。</p>
+                                <div class="list-tags">
+                                    <span class="tag">硬核</span>
+                                    <span class="tag">战斗</span>
+                                    <span class="tag">悬疑</span>
+                                </div>
+                            </div>
+                            <div class="list-footer">
+                                <span>昨天 23:15</span>
+                                <a href="#" class="btn-primary btn" style="padding: 4px 12px; font-size: 12px;">阅读</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="list-item">
+                        <div class="list-thumb">
+                            <img src="https://picsum.photos/seed/mecha8/200/280" alt="封面">
+                        </div>
+                        <div class="list-content">
+                            <div>
+                                <h3 class="list-title">大魔物语：地下城</h3>
+                                <p class="list-desc">虽然是机战题材，但这次我们进入了异世界。驾驶着魔改大魔机甲，在地下城中挑战魔物王。</p>
+                                <div class="list-tags">
+                                    <span class="tag">异世界</span>
+                                    <span class="tag">搞笑</span>
+                                </div>
+                            </div>
+                            <div class="list-footer">
+                                <span>昨天 18:45</span>
+                                <a href="#" class="btn-primary btn" style="padding: 4px 12px; font-size: 12px;">阅读</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Info/Help Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">💡 读者指南</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div style="background: var(--bg-card); padding: 20px; border-radius: 8px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">如何投稿作品？</h3>
+                        <p style="font-size: 14px; color: var(--text-muted);">我们欢迎优秀的机战同人创作。请将作品上传至我们的投稿系统，审核通过后将获得专属勋章和流量扶持。</p>
+                    </div>
+                    <div style="background: var(--bg-card); padding: 20px; border-radius: 8px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">阅读注意事项</h3>
+                        <p style="font-size: 14px; color: var(--text-muted);">本站所有内容均为同人创作，与原作版权方无关。请勿传播未经授权的盗版资源，支持正版创作。</p>
+                    </div>
+                    <div style="background: var(--bg-card); padding: 20px; border-radius: 8px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">常见问题</h3>
+                        <p style="font-size: 14px; color: var(--text-muted);">遇到加载失败或图片显示不全？请尝试清除浏览器缓存或更换网络环境。更多帮助请查看FAQ。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span>⚡</span> 机战SF
+                    </a>
+                    <p>专注机甲与科幻题材的二次元阅读平台，致力于为机战爱好者提供最优质的同人作品与阅读体验。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>网站导航</h4>
+                    <ul>
+                        <li><a href="#">首页推荐</a></li>
+                        <li><a href="#">最新更新</a></li>
+                        <li><a href="#">热门榜单</a></li>
+                        <li><a href="#">分类索引</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>热门分类</h4>
+                    <ul>
+                        <li><a href="#">高达同人</a></li>
+                        <li><a href="#">EVA同人</a></li>
+                        <li><a href="#">原创机战</a></li>
+                        <li><a href="#">重制经典</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">联系管理员</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 机战SF. All Rights Reserved. 本站内容仅供学习交流使用，请于下载后24小时内删除。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                      </html>
