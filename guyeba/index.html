@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古冶吧-本地生活资讯与便民服务平台</title>
+    <meta name="description" content="古冶吧为您提供唐山古冶区最新的本地新闻、生活资讯、房产信息、二手交易及便民服务。关注古冶发展，记录古冶生活，打造古冶人自己的网络家园。">
+    <meta name="keywords" content="古冶吧,唐山古冶,古冶新闻,古冶论坛,古冶生活,古冶房产,古冶二手">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #1d3557;
+            --accent-color: #457b9d;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #2b2d42;
+            --text-light: #8d99ae;
+            --border-color: #e9ecef;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-unit);
+            padding-left: var(--spacing-unit);
+            border-left: 5px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--secondary-color);
+            color: #fff;
+            font-size: 0.85rem;
+            padding: 8px 0;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-main .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .search-box {
+            display: flex;
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--primary-color);
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+            background-color: rgba(230, 57, 70, 0.05);
+        }
+
+        /* Hero Banner */
+        .hero {
+            margin: 20px 0;
+        }
+
+        .hero-banner {
+            height: 300px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #d62839;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+        }
+
+        /* Layout Grid */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        /* Feed / News */
+        .news-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            gap: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .news-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .news-thumb {
+            width: 180px;
+            height: 120px;
+            background-color: #eee;
+            border-radius: 6px;
+            flex-shrink: 0;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .news-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            background-color: #e0f2f1;
+            color: #00695c;
+            border-radius: 4px;
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+
+        .news-tag.hot {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .news-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .widget {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .hot-list li {
+            margin-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .hot-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hot-list a {
+            font-size: 0.95rem;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .hot-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .hot-list .num {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .hot-list .num.top-3 {
+            color: var(--primary-color);
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .category-name {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Forum Topic Preview */
+        .topic-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .topic-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #ddd;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .topic-content {
+            flex: 1;
+        }
+
+        .topic-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .topic-title:hover {
+            color: var(--accent-color);
+        }
+
+        .topic-stats {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #a8dadc;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-desc {
+            color: #a8dadc;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #8d99ae;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-main .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-box {
+                width: 100%;
+                margin: 0;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+
+            .hero-banner {
+                height: 200px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .news-item {
+                flex-direction: column;
+            }
+
+            .news-thumb {
+                width: 100%;
+                height: 180px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <span>欢迎来到古冶人自己的网络家园</span>
+                <div class="header-links">
+                    <a href="#">登录</a> | <a href="#">注册</a> | <a href="#">手机版</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="#" class="logo">古冶<span>吧</span></a>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索古冶新闻、论坛帖子或便民信息...">
+                    <button type="button">🔍</button>
+                </div>
+                <nav class="nav-links">
+                    <a href="#" class="active">首页</a>
+                    <a href="#">古冶资讯</a>
+                    <a href="#">古冶生活</a>
+                    <a href="#">房产家居</a>
+                    <a href="#">二手交易</a>
+                    <a href="#">古冶贴吧</a>
+                    <a href="#">公益求助</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h2>发现古冶，连接你我</h2>
+                    <p>汇聚古冶区最新本地资讯，提供便捷的便民服务，打造古冶地区最具活力的网络社区。</p>
+                    <a href="#" class="btn btn-primary">发布新帖</a>
+                    <a href="#" class="btn" style="background:rgba(255,255,255,0.2); margin-left:10px; color:#fff;">浏览热榜</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-layout">
+            <!-- Left Column: Content Feed -->
+            <section class="content-area">
+                <div class="section-title">
+                    <span>最新资讯</span>
+                    <a href="#">查看更多 &gt;</a>
+                </div>
+                
+                <div class="news-feed">
+                    <!-- Article 1 -->
+                    <article class="news-item">
+                        <div class="news-thumb" style="background-image: url('https://picsum.photos/seed/guye1/300/200');"></div>
+                        <div class="news-info">
+                            <div>
+                                <span class="news-tag hot">本地要闻</span>
+                                <h3 class="news-title"><a href="#">古冶区举办2024年春季大型人才招聘会，多家企业提供千余岗位</a></h3>
+                            </div>
+                            <div class="news-meta">
+                                <span>📅 2024-05-20</span>
+                                <span>👤 古冶新闻网</span>
+                                <span>👁 3,245</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="news-item">
+                        <div class="news-thumb" style="background-image: url('https://picsum.photos/seed/guye2/300/200');"></div>
+                        <div class="news-info">
+                            <div>
+                                <span class="news-tag">城市建设</span>
+                                <h3 class="news-title"><a href="#">唐山古冶区老旧小区改造工程全面提速，提升居民居住品质</a></h3>
+                            </div>
+                            <div class="news-meta">
+                                <span>📅 2024-05-19</span>
+                                <span>👤 古冶生活网</span>
+                                <span>👁 2,108</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="news-item">
+                        <div class="news-thumb" style="background-image: url('https://picsum.photos/seed/guye3/300/200');"></div>
+                        <div class="news-info">
+                            <div>
+                                <span class="news-tag">便民服务</span>
+                                <h3 class="news-title"><a href="#">古冶区2024年中小学招生政策解读：学区划分及报名时间安排</a></h3>
+                            </div>
+                            <div class="news-meta">
+                                <span>📅 2024-05-18</span>
+                                <span>👤 教育局官方</span>
+                                <span>👁 5,670</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="news-item">
+                        <div class="news-thumb" style="background-image: url('https://picsum.photos/seed/guye4/300/200');"></div>
+                        <div class="news-info">
+                            <div>
+                                <span class="news-tag">文化旅游</span>
+                                <h3 class="news-title"><a href="#">开滦国家矿山公园迎来旅游高峰，古冶文旅融合展现新活力</a></h3>
+                            </div>
+                            <div class="news-meta">
+                                <span>📅 2024-05-17</span>
+                                <span>👤 文旅宣传</span>
+                                <span>👁 1,890</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Right Column: Sidebar -->
+            <aside>
+                <!-- Hot Topics Widget -->
+                <div class="widget">
+                    <div class="widget-title">🔥 热门话题</div>
+                    <ul class="hot-list">
+                        <li><a href="#"><span class="num top-3">1</span>古冶火车站改造最新进展</a></li>
+                        <li><a href="#"><span class="num top-3">2</span>凤山公园夜市美食推荐</a></li>
+                        <li><a href="#"><span class="num top-3">3</span>关于规范小区停车收费的通知</a></li>
+                        <li><a href="#"><span class="num">4</span>寻找走失宠物狗</a></li>
+                        <li><a href="#"><span class="num">5</span>古冶区2024年医保缴费截止提醒</a></li>
+                    </ul>
+                </div>
+
+                <!-- Forum Topics Widget -->
+                <div class="widget">
+                    <div class="widget-title">💬 论坛热议</div>
+                    <div class="topic-list">
+                        <div class="topic-item">
+                            <div class="topic-avatar"></div>
+                            <div class="topic-content">
+                                <div class="topic-title"><a href="#">老街坊们，咱古冶现在变化太大了！</a></div>
+                                <div class="topic-stats">回复 45 · 浏览 1.2k</div>
+                            </div>
+                        </div>
+                        <div class="topic-item">
+                            <div class="topic-avatar"></div>
+                            <div class="topic-content">
+                                <div class="topic-title"><a href="#">求助：哪位知道古冶哪个医院牙科好？</a></div>
+                                <div class="topic-stats">回复 12 · 浏览 340</div>
+                            </div>
+                        </div>
+                        <div class="topic-item">
+                            <div class="topic-avatar"></div>
+                            <div class="topic-content">
+                                <div class="topic-title"><a href="#">周末去哪玩？推荐几个适合带孩子的去处</a></div>
+                                <div class="topic-stats">回复 88 · 浏览 3.5k</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" style="display:block; margin-top:15px; text-align:center; color:var(--accent-color); font-size:0.9rem;">进入论坛 &raquo;</a>
+                </div>
+
+                <!-- Ad Placeholder -->
+                <div class="widget" style="background:#eee; text-align:center; padding:40px 20px; color:#999;">
+                    <p>广告位招租</p>
+                    <p style="font-size:0.8rem;">联系电话：0315-xxxxxxx</p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Categories Section -->
+        <section>
+            <div class="section-title">
+                <span>生活分类</span>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <span class="category-icon">🏠</span>
+                    <div class="category-name">房产信息</div>
+                    <div style="font-size:0.8rem; color:#888; margin-top:5px;">二手房/租房</div>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🚗</span>
+                    <div class="category-name">车辆交易</div>
+                    <div style="font-size:0.8rem; color:#888; margin-top:5px;">二手车/配件</div>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">👔</span>
+                    <div class="category-name">招聘求职</div>
+                    <div style="font-size:0.8rem; color:#888; margin-top:5px;">企业招聘/兼职</div>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🎓</span>
+                    <div class="category-name">教育培训</div>
+                    <div style="font-size:0.8rem; color:#888; margin-top:5px;">辅导/技能培训</div>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🏥</span>
+                    <div class="category-name">同城服务</div>
+                    <div style="font-size:0.8rem; color:#888; margin-top:5px;">维修/家政/装修</div>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🍔</span>
+                    <div class="category-name">美食推荐</div>
+                    <div style="font-size:0.8rem; color:#888; margin-top:5px;">探店/优惠</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>关于古冶吧</h3>
+                    <p class="footer-desc">古冶吧是古冶地区最大的本地生活门户网站，致力于为古冶市民提供最及时、最全面的本地资讯与便民服务。我们关注古冶发展，记录古冶生活。</p>
+                </div>
+                <div class="footer-col">
+                    <h3>快速导航</h3>
+                    <ul>
+                        <li><a href="#">网站首页</a></li>
+                        <li><a href="#">古冶新闻</a></li>
+                        <li><a href="#">房产频道</a></li>
+                        <li><a href="#">二手市场</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>服务支持</h3>
+                    <ul>
+                        <li><a href="#">用户注册</a></li>
+                        <li><a href="#">发布信息</a></li>
+                        <li><a href="#">广告服务</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>关注我们</h3>
+                    <p class="footer-desc">扫码关注微信公众号<br>获取更多古冶本地资讯</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 古冶吧 版权所有 | ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                                                             </html>
