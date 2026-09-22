@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="欢乐桶 - 您的专属快乐源泉与趣味内容聚合平台。提供最新热门笑话、冷知识、搞笑图片及短视频合集，全天候为您带来轻松愉悦的阅读体验。">
+    <meta name="keywords" content="欢乐桶, 搞笑, 笑话大全, 趣味, 快乐源泉, 搞笑视频">
+    <title>欢乐桶-每日更新趣味内容与快乐源泉</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #FF6B6B;
+            --primary-dark: #EE5253;
+            --secondary-color: #4ECDC4;
+            --accent-color: #FFE66D;
+            --text-main: #2D3436;
+            --text-light: #636E72;
+            --bg-body: #F7F9FC;
+            --bg-card: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            padding: 15px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 600;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(180deg, #FFF5F5 0%, var(--bg-body) 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .highlight::before {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: -5px;
+            right: -5px;
+            height: 15px;
+            background: var(--accent-color);
+            z-index: -1;
+            border-radius: 8px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 40px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            padding: 25px 15px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--secondary-color);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .category-name {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Content Grid */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .content-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-image {
+            height: 180px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .content-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            backdrop-filter: blur(4px);
+        }
+
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .card-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .card-footer .meta {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .like-btn {
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.2s;
+        }
+
+        .like-btn:hover, .like-btn.liked {
+            color: var(--primary-color);
+        }
+
+        /* Daily Pick Section */
+        .daily-pick {
+            background: #fff;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .daily-layout {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .daily-image {
+            flex: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .daily-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .daily-content {
+            flex: 1;
+        }
+
+        .daily-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .daily-content p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        /* Interactive Fun */
+        .fun-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .fun-section .section-title {
+            color: white;
+        }
+
+        .fun-section .section-title::after {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .fun-section .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .meme-generator {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            margin: 30px auto 0;
+            color: var(--text-main);
+        }
+
+        .meme-input-group {
+            margin-bottom: 20px;
+        }
+
+        .meme-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .meme-input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .meme-input-group input:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #2D3436;
+            color: #dfe6e9;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #b2bec3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .daily-layout {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span>🪣</span> 欢乐桶
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">每日一笑</a></li>
+                    <li><a href="#">冷知识</a></li>
+                    <li><a href="#">表情包</a></li>
+                    <li><a href="#">排行榜</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">投稿</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>让快乐<br>随时随地<br><span class="highlight">装满您的桶</span></h1>
+                <p>汇集全网最优质的搞笑段子、冷门趣闻和治愈系内容。在这里，您不仅能收获笑声，还能发现生活中的小确幸。</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10W+</h3>
+                        <p>每日新增内容</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500W+</h3>
+                        <p>快乐收藏家</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99%</h3>
+                        <p>好评率</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories">
+            <div class="container">
+                <div class="category-grid">
+                    <div class="category-card">
+                        <span class="category-icon">😄</span>
+                        <div class="category-name">爆笑段子</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">🤔</span>
+                        <div class="category-name">冷知识</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">📸</span>
+                        <div class="category-name">神图</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">🎬</span>
+                        <div class="category-name">搞笑视频</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">🐱</span>
+                        <div class="category-name">萌宠日常</div>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">😂</span>
+                        <div class="category-name">沙雕图集</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Pick -->
+        <section class="daily-pick">
+            <div class="container">
+                <div class="daily-layout">
+                    <div class="daily-image">
+                        <img src="https://picsum.photos/seed/funnydog/600/400" alt="今日精选">
+                    </div>
+                    <div class="daily-content">
+                        <span style="color:var(--primary-color); font-weight:700; letter-spacing:1px;">今日快乐源泉</span>
+                        <h2>当猫咪决定统治世界时</h2>
+                        <p>“虽然我还没准备好，但你们最好现在就开始崇拜我。” 这只橘猫正坐在窗台上，用一种“我是老大”的眼神俯视着楼下的麻雀。它那微胖的身躯和严肃的表情，完美诠释了什么叫“反差萌”。</p>
+                        <p>今天在评论区看到很多铲屎官分享了自己的“社死”现场，看来大家都被这只小家伙治愈了呢！点击下方按钮，查看完整故事。</p>
+                        <button class="btn btn-primary">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Grid -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">最新更新</h2>
+                <p class="section-subtitle">精选全网热门内容，不错过每一个笑点</p>
+                
+                <div class="content-grid">
+                    <!-- Card 1 -->
+                    <article class="content-card">
+                        <div class="card-image">
+                            <span class="card-badge">段子</span>
+                            <img src="https://picsum.photos/seed/tech/400/300" alt="内容缩略图">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">为什么程序员总是喜欢把电脑放在地上？</h3>
+                            <p class="card-excerpt">为了防止蚊子咬脚？不，是因为桌底空间大，适合放零食...</p>
+                            <div class="card-footer">
+                                <div class="meta">2小时前</div>
+                                <div class="like-btn" onclick="toggleLike(this)">👍 128</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="content-card">
+                        <div class="card-image">
+                            <span class="card-badge">冷知识</span>
+                            <img src="https://picsum.photos/seed/nature/400/300" alt="内容缩略图">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">你知道章鱼有三颗心脏吗？</h3>
+                            <p class="card-excerpt">这听起来很酷，但如果它感到压力，心脏会停止跳动，瞬间死亡...</p>
+                            <div class="card-footer">
+                                <div class="meta">5小时前</div>
+                                <div class="like-btn" onclick="toggleLike(this)">👍 356</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="content-card">
+                        <div class="card-image">
+                            <span class="card-badge">萌宠</span>
+                            <img src="https://picsum.photos/seed/cat/400/300" alt="内容缩略图">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">这只仓鼠的洗脸方式太标准了</h3>
+                            <p class="card-excerpt">看着它用两只前爪交替揉搓脸庞，感觉时间都静止了，太治愈了...</p>
+                            <div class="card-footer">
+                                <div class="meta">昨天</div>
+                                <div class="like-btn" onclick="toggleLike(this)">👍 892</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="content-card">
+                        <div class="card-image">
+                            <span class="card-badge">神图</span>
+                            <img src="https://picsum.photos/seed/food/400/300" alt="内容缩略图">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">这绝对是史上最离谱的披萨</h3>
+                            <p class="card-excerpt">上面放了一整颗榴莲和一包辣条，这是什么黑暗料理界的巅峰...</p>
+                            <div class="card-footer">
+                                <div class="meta">昨天</div>
+                                <div class="like-btn" onclick="toggleLike(this)">👍 445</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="content-card">
+                        <div class="card-image">
+                            <span class="card-badge">视频</span>
+                            <img src="https://picsum.photos/seed/car/400/300" alt="内容缩略图">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">猫咪的内心戏：主人你到底在干嘛</h3>
+                            <p class="card-excerpt">隔着屏幕都能感受到它的鄙视，这眼神仿佛在说“人类真麻烦”...</p>
+                            <div class="card-footer">
+                                <div class="meta">2天前</div>
+                                <div class="like-btn" onclick="toggleLike(this)">👍 1.2k</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="content-card">
+                        <div class="card-image">
+                            <span class="card-badge">段子</span>
+                            <img src="https://picsum.photos/seed/work/400/300" alt="内容缩略图">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">老板画的饼 vs 我画的饼</h3>
+                            <p class="card-excerpt">这构图水平，老板应该去当画师，而不是当老板...</p>
+                            <div class="card-footer">
+                                <div class="meta">2天前</div>
+                                <div class="like-btn" onclick="toggleLike(this)">👍 666</div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Fun Section -->
+        <section class="fun-section">
+            <div class="container">
+                <h2 class="section-title">欢乐桶造句机</h2>
+                <p class="section-subtitle">输入任意词语，生成属于你的专属快乐文案</p>
+                
+                <div class="meme-generator">
+                    <div class="meme-input-group">
+                        <label>输入你想说的话（例如：今天不想上班）</label>
+                        <input type="text" id="funInput" placeholder="在这里输入..." maxlength="20">
+                    </div>
+                    <div class="meme-input-group">
+                        <label>选择一种心情</label>
+                        <select id="funSelect" style="width:100%; padding:12px; border-radius:8px; border:2px solid #eee;">
+                            <option value="sad">😭 哭泣</option>
+                            <option value="happy">😁 开心</option>
+                            <option value="angry">😡 暴躁</option>
+                            <option value="cool">😎 高冷</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%" onclick="generateFun()">生成快乐</button>
+                    <div id="resultArea" style="margin-top:20px; font-size:1.5rem; font-weight:bold; min-height:2rem; color:var(--primary-color);"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom:15px; color:white;">
+                        <span>🪣</span> 欢乐桶
+                    </div>
+                    <p style="font-size:0.9rem; line-height:1.6; opacity:0.8;">
+                        专注于为用户提供高质量、正能量、有趣的互联网内容。您的快乐，就是我们的桶。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>浏览分类</h4>
+                    <ul>
+                        <li><a href="#">爆笑段子</a></li>
+                        <li><a href="#">冷知识</a></li>
+                        <li><a href="#">搞笑视频</a></li>
+                        <li><a href="#">表情包大全</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">关于欢乐桶</a></li>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>合作邮箱：bd@huanletong.com</li>
+                        <li>商务热线：400-123-4567</li>
+                        <li style="margin-top:15px;">
+                            <span style="font-size:1.5rem; margin-right:10px;">📱</span>
+                            <span style="font-size:1.5rem; margin-right:10px;">💬</span>
+                            <span style="font-size:1.5rem;">📧</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 欢乐桶. All Rights Reserved. 仅供展示使用</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Like Button Interaction
+        function toggleLike(btn) {
+            btn.classList.toggle('liked');
+            const countSpan = btn;
+            let count = parseInt(countSpan.innerText.replace(/\D/g, ''));
+            if (btn.classList.contains('liked')) {
+                count++;
+                btn.style.color = 'var(--primary-color)';
+            } else {
+                count--;
+                btn.style.color = '';
+            }
+            btn.innerText = '👍 ' + count;
+        }
+
+        // Fun Generator Logic
+        function generateFun() {
+            const input = document.getElementById('funInput').value;
+            const select = document.getElementById('funSelect');
+            const resultArea = document.getElementById('resultArea');
+            
+            if (!input) {
+                resultArea.innerText = "请先输入点什么吧~";
+                return;
+            }
+
+            const moods = {
+                'sad': ['但是...', '但是...', '但是...'],
+                'happy': ['哈哈哈哈', '太棒了', '绝了'],
+                'angry': ['气死我了', '离谱', '无语'],
+                'cool': ['懂了', '确实', '这就对了']
+            };
+
+            const randomMood = moods[select.value];
+            const randomEnding = randomMood[Math.floor(Math.random() * randomMood.length)];
+            
+            resultArea.innerText = `${input} ${randomEnding}`;
+            resultArea.style.opacity = 0;
+            setTimeout(() => {
+                resultArea.style.transition = 'opacity 0.5s';
+                resultArea.style.opacity = 1;
+            }, 50);
+        }
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
+                header.style.padding = '15px 0';
+            }
+        });
+    </script>
+</body>
+  </html>
