@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大师网 - 专业设计灵感与创意资源平台</title>
+    <meta name="description" content="大师网为您提供海量优质设计灵感、免费商用素材、创意教程及行业案例分享，是设计师与创作者的首选灵感社区。">
+    <meta name="keywords" content="大师网,设计灵感,免费素材,UI设计,插画,创意,教程">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e293b;
+            --accent-color: #f59e0b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            padding-right: 50px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 40px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 25px;
+            max-width: var(--container-width);
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 20px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .cat-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .cat-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .cat-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .cat-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* Featured Works */
+        .featured {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .work-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .work-img-wrapper {
+            position: relative;
+            padding-top: 75%; /* 4:3 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .work-img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .work-card:hover .work-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .work-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .work-info {
+            padding: 20px;
+        }
+
+        .work-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .work-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e2e8f0;
+        }
+
+        /* Tutorials Section */
+        .tutorials {
+            padding: 60px 0;
+        }
+
+        .tutorial-list {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .tutorial-item {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .tutorial-item:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .tut-thumb {
+            width: 280px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .tut-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tut-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(37, 99, 235, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .tut-content {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .tut-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .tut-desc {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .tut-footer {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .tag {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 15px;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                overflow-x: auto;
+            }
+
+            nav ul {
+                gap: 20px;
+                padding-bottom: 5px;
+            }
+
+            .header-actions {
+                margin-left: auto;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .tutorial-item {
+                flex-direction: column;
+            }
+
+            .tut-thumb {
+                width: 100%;
+                height: 200px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                大师网
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">设计素材</a></li>
+                    <li><a href="#">灵感案例</a></li>
+                    <li><a href="#">设计师社区</a></li>
+                    <li><a href="#">工具箱</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">上传作品</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>汇聚全球顶尖设计灵感与创意资源</h1>
+                <p>无论是UI设计、平面海报还是3D渲染，大师网为您提供海量高清素材与专业教程，激发您的无限创造力。</p>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索灵感、图片、教程或设计师...">
+                    <button aria-label="搜索">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories">
+            <div class="section-header">
+                <h2 class="section-title">热门分类</h2>
+                <a href="#" style="color: var(--primary-color); font-weight: 500;">查看全部 &rarr;</a>
+            </div>
+            <div class="category-grid">
+                <div class="cat-item">
+                    <span class="cat-icon">🎨</span>
+                    <span class="cat-name">平面设计</span>
+                </div>
+                <div class="cat-item">
+                    <span class="cat-icon">💻</span>
+                    <span class="cat-name">UI/UX</span>
+                </div>
+                <div class="cat-item">
+                    <span class="cat-icon">✒️</span>
+                    <span class="cat-name">插画艺术</span>
+                </div>
+                <div class="cat-item">
+                    <span class="cat-icon">📷</span>
+                    <span class="cat-name">摄影图片</span>
+                </div>
+                <div class="cat-item">
+                    <span class="cat-icon">🎬</span>
+                    <span class="cat-name">视频特效</span>
+                </div>
+                <div class="cat-item">
+                    <span class="cat-icon">🏠</span>
+                    <span class="cat-name">3D建模</span>
+                </div>
+                <div class="cat-item">
+                    <span class="cat-icon">📝</span>
+                    <span class="cat-name">字体设计</span>
+                </div>
+                <div class="cat-item">
+                    <span class="cat-icon">🌐</span>
+                    <span class="cat-name">网页开发</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Works -->
+        <section class="featured">
+            <div class="section-header">
+                <h2 class="section-title">本周精选作品</h2>
+                <a href="#" style="color: var(--primary-color); font-weight: 500;">浏览更多 &rarr;</a>
+            </div>
+            <div class="works-grid">
+                <article class="work-card">
+                    <div class="work-img-wrapper">
+                        <span class="work-tag">UI设计</span>
+                        <img src="https://picsum.photos/seed/design1/600/450" alt="极简金融APP界面设计">
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">极简金融APP界面设计概念</h3>
+                        <div class="work-meta">
+                            <div class="author-info">
+                                <img src="https://picsum.photos/seed/user1/50/50" class="author-avatar" alt="User">
+                                <span>DesignMaster</span>
+                            </div>
+                            <span>1.2w 浏览</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="work-card">
+                    <div class="work-img-wrapper">
+                        <span class="work-tag">海报</span>
+                        <img src="https://picsum.photos/seed/design2/600/450" alt="赛博朋克风格音乐会海报">
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">赛博朋克风格音乐会海报</h3>
+                        <div class="work-meta">
+                            <div class="author-info">
+                                <img src="https://picsum.photos/seed/user2/50/50" class="author-avatar" alt="User">
+                                <span>CyberArtist</span>
+                            </div>
+                            <span>8.5k 浏览</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="work-card">
+                    <div class="work-img-wrapper">
+                        <span class="work-tag">3D渲染</span>
+                        <img src="https://picsum.photos/seed/design3/600/450" alt="未来感办公桌场景">
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">未来感办公桌场景渲染</h3>
+                        <div class="work-meta">
+                            <div class="author-info">
+                                <img src="https://picsum.photos/seed/user3/50/50" class="author-avatar" alt="User">
+                                <span>3DLegend</span>
+                            </div>
+                            <span>6.3k 浏览</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Tutorials -->
+        <section class="tutorials">
+            <div class="section-header">
+                <h2 class="section-title">精选教程</h2>
+                <a href="#" style="color: var(--primary-color); font-weight: 500;">全部课程 &rarr;</a>
+            </div>
+            <div class="tutorial-list">
+                <article class="tutorial-item">
+                    <div class="tut-thumb">
+                        <img src="https://picsum.photos/seed/tut1/600/400" alt="Photoshop合成教程">
+                        <div class="tut-play">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tut-content">
+                        <h3 class="tut-title">零基础入门：Photoshop合成艺术全解析</h3>
+                        <p class="tut-desc">本课程将从图层混合模式讲起，深入讲解光影塑造与材质合成技巧，带你完成一幅惊艳的商业合成海报。</p>
+                        <div class="tut-footer">
+                            <span class="tag">PS教程</span>
+                            <span>时长: 45分钟</span>
+                            <span>难度: 入门</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tutorial-item">
+                    <div class="tut-thumb">
+                        <img src="https://picsum.photos/seed/tut2/600/400" alt="Figma原型设计">
+                        <div class="tut-play">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tut-content">
+                        <h3 class="tut-title">高保真UI原型设计：从线框图到交互逻辑</h3>
+                        <p class="tut-desc">学习如何使用Figma构建具有微交互的高保真原型，掌握组件变体与自动布局的高级应用。</p>
+                        <div class="tut-footer">
+                            <span class="tag">UI设计</span>
+                            <span>时长: 60分钟</span>
+                            <span>难度: 进阶</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section style="background: #fff; padding: 60px 0;">
+            <div class="section-header">
+                <h2 class="section-title">常见问题</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; padding: 0 var(--spacing-unit);">
+                <div style="border-bottom: 1px solid var(--border-color); padding: 20px 0;">
+                    <h4 style="font-weight: 600; margin-bottom: 8px;">大师网的素材可以免费商用吗？</h4>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">平台上的部分素材标注了“免费商用”标签，具体请查看素材详情页的授权协议。个人学习使用的素材通常无版权限制。</p>
+                </div>
+                <div style="border-bottom: 1px solid var(--border-color); padding: 20px 0;">
+                    <h4 style="font-weight: 600; margin-bottom: 8px;">如何成为大师网的签约设计师？</h4>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">如果您在行业内有丰富的经验且作品质量优秀，可以通过“上传作品”功能提交申请，审核通过后将获得专属徽章及收益分成。</p>
+                </div>
+                <div style="padding: 20px 0;">
+                    <h4 style="font-weight: 600; margin-bottom: 8px;">网站支持哪些设计软件格式的下载？</h4>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">我们主要提供PSD、AI、Figma、Sketch、C4D、Blender等多种主流设计软件格式，满足不同工作流需求。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>大师网</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8; max-width: 300px;">
+                    专注于为全球设计师提供高质量的灵感获取与素材分享服务，连接创意与商业的桥梁。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">平台介绍</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>资源分类</h4>
+                <ul>
+                    <li><a href="#">图片素材</a></li>
+                    <li><a href="#">矢量图标</a></li>
+                    <li><a href="#">字体下载</a></li>
+                    <li><a href="#">插件资源</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">投稿指南</a></li>
+                    <li><a href="#">积分规则</a></li>
+                    <li><a href="#">版权申诉</a></li>
+                    <li><a href="#">意见反馈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 大师网 版权所有.
+        </div>
+    </footer>
+
+</body>
+              </html>
